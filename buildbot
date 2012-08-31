@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+
+DEVICE=triumph
+ROM=CyanogenMod
+HOME=~/android/triumph
+
+echo "Building for $ROM on $DEVICE. You're Welcome! (Not making clobber)"
+cd $HOME
+. build/envsetup.sh
+lunch cm_$DEVICE-userdebug
+make -j4 bacon

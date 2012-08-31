@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+
+echo "starting checkouts after repo sync. You're welcome!"
+
+HOME=~/android/triumph/
+
+cd $HOME
+cd device/motorola/triumph
+git checkout jellybean
+cd $HOME
+cd frameworks/base
+git checkout jellybean
+cd $HOME
+cd hardware/libhardware_legacy
+git checkout jellybean
+cd $HOME
+cd hardware/qcom/display
+git checkout jellybean
+cd $HOME

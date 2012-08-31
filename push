@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+
+HOME=~/android/triumph/
+
+echo "Pushing all changes to github"
+
+cd $HOME
+cd frameworks/base
+git checkout jellybean
+git fetch upstream
+git merge upstream/jellybean
+git push -f origin
+git push -f origin1
+cd $HOME
+cd hardware/libhardware_legacy
+git checkout jellybean
+git fetch upstream
+git merge upstream/jellybean 
+git push -f origin
+git push -f origin1
+cd hardware/qcom/display
+git checkout jellybean
+git fetch upstream
+git merge upstream/jellybean
+git push -f origin
+git push -f origin1
+cd $HOME
+cd device/motorola/triumph
+git push -f origin
+git push -f origin1
+cd $HOME

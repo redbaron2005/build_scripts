@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+
+HOME=~/android/triumph/
+DEVICE=triumph
+ROM=CyanogenMod
+
+echo "Checking out, Pushing, Building, and pushing to Git for $ROM on the $DEVICE"
+
+echo "Checking out and pushing"
+cd $HOME
+repo sync -j8
+cd frameworks/base
+git checkout jellybean
+git fetch upstream
+git merge upstream/jellybean
+git push -f origin
+git push -f origin1
+cd $HOME
+cd hardware/libhardware_legacy
+git checkout jellybean
+git fetch upstream
+git merge upstream/jellybean 
+git push -f origin
+git push -f origin1
+cd $HOME
+cd hardware/qcom/display
+git checkout jellybean
+git fetch upstream
+git merge upstream/jellybean
+git push -f origin
+git push -f origin1
+cd $HOME
+cd device/motorola/triumph
+git push -f origin
+git push -f origin1
+cd $HOME
+
+echo "Starting build"
+. build/envsetup.sh
+lunch cm_$DEVICE-userdebug
+make clobber
+make -j4 bacon
+
+exit
+
